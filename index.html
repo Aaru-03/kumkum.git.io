@@ -3,648 +3,689 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <title>Happy Birthday, My Bestie! 🌸💖</title>
+    <title>🎀 Happy Birthday My Forever Bestie! 🎀</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&family=Pacifico&family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            user-select: none; /* avoid accidental text selection while enjoying */
+            user-select: none;
         }
 
         body {
             min-height: 100vh;
-            background: linear-gradient(145deg, #fce4ec 0%, #ffe6f0 40%, #ffe0f0 100%);
-            font-family: 'Poppins', 'Segoe UI', 'Quicksand', system-ui, -apple-system, 'Pacifico', cursive;
+            background: radial-gradient(circle at 10% 30%, #ffdde1, #f9c9e2, #ffb3d1);
+            font-family: 'Poppins', 'Quicksand', sans-serif;
             overflow-x: hidden;
             position: relative;
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 20px;
+            padding: 30px 20px;
         }
 
-        /* music control button */
-        .music-btn {
+        /* animated background gradient */
+        body::before {
+            content: '';
             position: fixed;
-            bottom: 25px;
-            right: 25px;
-            background: #ff88b0;
-            border: none;
-            width: 55px;
-            height: 55px;
-            border-radius: 50%;
-            cursor: pointer;
-            z-index: 200;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-            transition: 0.3s;
-            font-size: 28px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            backdrop-filter: blur(4px);
-            background: rgba(255, 140, 180, 0.85);
-            color: white;
-        }
-        .music-btn:hover {
-            transform: scale(1.07);
-            background: #ff6f9e;
-        }
-
-        /* floating hearts & emojis container */
-        .floating-emoji {
-            position: fixed;
-            pointer-events: none;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: 15;
+            background: radial-gradient(circle at 20% 40%, rgba(255,200,220,0.4), rgba(255,220,240,0.2));
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* floating emojis layer */
+        .floating-zone {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 20;
             overflow: hidden;
         }
 
-        .emoji-item {
+        .float-item {
             position: absolute;
-            font-size: 1.8rem;
-            animation: floatUp 8s linear forwards;
-            opacity: 0.8;
-            filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1));
+            font-size: 2rem;
+            animation: floatGlide 10s linear forwards;
+            filter: drop-shadow(0 5px 8px rgba(0,0,0,0.2));
+            opacity: 0.9;
         }
 
-        @keyframes floatUp {
+        @keyframes floatGlide {
             0% {
-                transform: translateY(100vh) scale(0.6);
+                transform: translateY(110vh) rotate(0deg) scale(0.5);
+                opacity: 0;
+            }
+            15% {
                 opacity: 0.9;
             }
-            80% {
+            85% {
                 opacity: 0.9;
             }
             100% {
-                transform: translateY(-10vh) scale(1.2);
+                transform: translateY(-15vh) rotate(360deg) scale(1.3);
                 opacity: 0;
             }
         }
 
-        /* main 3D carousel area */
-        .carousel-container {
-            perspective: 1200px;
-            width: 100%;
-            max-width: 1000px;
-            margin: 60px auto;
+        /* music controller */
+        .music-control {
+            position: fixed;
+            bottom: 28px;
+            right: 28px;
+            background: rgba(255, 110, 150, 0.9);
+            backdrop-filter: blur(12px);
+            border: none;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            font-size: 30px;
+            cursor: pointer;
+            z-index: 150;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2), 0 0 0 4px rgba(255,215,235,0.8);
+            transition: 0.2s;
+            color: white;
             display: flex;
-            justify-content: center;
             align-items: center;
-            flex-direction: column;
+            justify-content: center;
+        }
+        .music-control:hover {
+            transform: scale(1.08);
+            background: #ff4d82;
         }
 
-        .photo-strip {
+        /* main 3d carousel container */
+        .carousel-stage {
+            perspective: 1400px;
+            width: 100%;
+            max-width: 1200px;
+            margin: 40px auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
             position: relative;
-            width: 300px;
-            height: 400px;
+            z-index: 10;
+        }
+
+        /* 3D ring */
+        .photo-ring {
+            position: relative;
+            width: 320px;
+            height: 430px;
             transform-style: preserve-3d;
-            transition: transform 0.8s cubic-bezier(0.2, 0.85, 0.4, 1.1);
+            transition: transform 0.9s cubic-bezier(0.2, 0.85, 0.4, 1.1);
             margin: 20px auto;
         }
 
         .photo-card {
             position: absolute;
-            width: 280px;
-            height: 360px;
-            border-radius: 28px;
-            background: rgba(255,245,250,0.9);
-            backdrop-filter: blur(2px);
-            box-shadow: 0 25px 45px rgba(0,0,0,0.25), 0 0 0 6px rgba(255,215,235,0.7);
-            transition: all 0.3s;
-            overflow: hidden;
+            width: 290px;
+            height: 390px;
+            border-radius: 32px;
+            background: rgba(255, 245, 250, 0.96);
+            box-shadow: 0 35px 55px rgba(0, 0, 0, 0.3), 0 0 0 7px rgba(255, 200, 220, 0.9);
+            overflow: visible;
+            transition: all 0.3s ease;
             cursor: pointer;
-            border: 2px solid #ffbfd5;
+            transform-style: preserve-3d;
+            backdrop-filter: blur(2px);
         }
 
         .photo-card img {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            border-radius: 28px;
+            transition: transform 0.4s;
             display: block;
-            transition: transform 0.5s;
+        }
+
+        .photo-card:hover {
+            filter: brightness(1.02);
+            box-shadow: 0 45px 70px rgba(0, 0, 0, 0.4), 0 0 0 10px #ffbfda;
+            transform: translateZ(12px);
         }
 
         .photo-card:hover img {
-            transform: scale(1.05);
+            transform: scale(1.02);
         }
 
-        /* floating message on each photo */
-        .message-bubble {
+        /* ✨ FLOATING MESSAGE - each message beautifully hovering ✨ */
+        .floating-message {
             position: absolute;
-            bottom: -30px;
+            top: -48px;
             left: 50%;
             transform: translateX(-50%) translateY(0);
-            background: rgba(255, 245, 250, 0.95);
-            backdrop-filter: blur(12px);
-            padding: 8px 16px;
+            background: linear-gradient(135deg, #fff5f9, #ffe6f0);
+            backdrop-filter: blur(18px);
+            padding: 10px 24px;
             border-radius: 60px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            white-space: nowrap;
-            color: #c43a6b;
-            box-shadow: 0 6px 14px rgba(0,0,0,0.1);
-            pointer-events: none;
+            font-weight: 700;
+            font-size: 0.95rem;
             font-family: 'Quicksand', 'Poppins', sans-serif;
+            color: #c52566;
+            white-space: nowrap;
+            box-shadow: 0 15px 25px rgba(255, 70, 120, 0.3), 0 0 0 2px rgba(255, 150, 190, 0.6);
             letter-spacing: 0.5px;
-            border: 1px solid #ffb7cf;
-            transition: 0.2s;
-            z-index: 12;
-        }
-
-        /* small variation for messages */
-        .photo-card:hover .message-bubble {
-            transform: translateX(-50%) translateY(-8px);
-            background: #ffffff;
-            color: #e8437a;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-        }
-
-        /* control indicator */
-        .photo-counter {
-            margin-top: 70px;
-            text-align: center;
+            pointer-events: none;
+            z-index: 25;
+            transition: all 0.35s cubic-bezier(0.2, 0.9, 0.4, 1.2);
+            backdrop-filter: blur(12px);
             font-weight: 600;
-            background: rgba(255,220,235,0.7);
-            backdrop-filter: blur(8px);
-            padding: 8px 18px;
-            border-radius: 60px;
-            display: inline-block;
-            align-self: center;
-            color: #b3446c;
-            font-size: 1rem;
+            text-shadow: 0 1px 1px white;
         }
 
-        /* main title & dedication */
-        .birthday-message {
-            text-align: center;
-            background: rgba(255,245,250,0.7);
-            backdrop-filter: blur(10px);
-            margin-bottom: 40px;
-            padding: 25px 20px;
-            border-radius: 70px;
-            width: 90%;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
-            border: 1px solid #ffbfda;
-        }
-
-        .main-title {
-            font-size: 3rem;
-            font-family: 'Pacifico', cursive;
-            background: linear-gradient(135deg, #ff7eb3, #ff758c, #ff98b9);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            text-shadow: 2px 2px 12px rgba(255,105,150,0.3);
-        }
-
-        .dedication-text {
+        /* cute speech bubble details */
+        .floating-message::before {
+            content: "💬";
+            position: absolute;
+            left: -24px;
+            top: 50%;
+            transform: translateY(-50%);
             font-size: 1.1rem;
-            margin: 15px 0;
-            color: #a13e62;
-            line-height: 1.5;
-            font-weight: 500;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-            background: rgba(255, 225, 235, 0.6);
-            border-radius: 40px;
-            padding: 12px 18px;
+            opacity: 0.8;
         }
 
-        .extra-quotes {
+        .floating-message::after {
+            content: "💖";
+            position: absolute;
+            right: -24px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.1rem;
+            opacity: 0.8;
+        }
+
+        /* floating animation - gentle and continuous */
+        .photo-card .floating-message {
+            animation: gentleFloat 2.8s infinite ease-in-out;
+        }
+
+        @keyframes gentleFloat {
+            0% {
+                transform: translateX(-50%) translateY(0px);
+            }
+            50% {
+                transform: translateX(-50%) translateY(-10px);
+            }
+            100% {
+                transform: translateX(-50%) translateY(0px);
+            }
+        }
+
+        .photo-card:hover .floating-message {
+            transform: translateX(-50%) translateY(-15px);
+            background: #ffffff;
+            color: #da3a73;
+            box-shadow: 0 20px 30px rgba(255, 50, 100, 0.4);
+            animation: none;
+            scale: 1.02;
+        }
+
+        /* navigation & indicator */
+        .nav-panel {
             display: flex;
+            gap: 25px;
+            margin: 45px 0 15px;
+            align-items: center;
             flex-wrap: wrap;
-            gap: 12px;
             justify-content: center;
-            margin: 18px 0 0;
         }
-
-        .extra-quotes span {
-            background: #ffeef4;
-            padding: 6px 14px;
-            border-radius: 60px;
-            font-size: 0.85rem;
-            font-weight: 500;
-            color: #cd5b84;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
-        }
-
-        .control-buttons {
-            display: flex;
-            gap: 18px;
-            justify-content: center;
-            margin: 25px 0 10px;
-        }
-
         .nav-btn {
-            background: #ff92bb;
+            background: #ff85ae;
             border: none;
-            padding: 8px 20px;
-            border-radius: 40px;
+            padding: 10px 32px;
+            border-radius: 50px;
             font-weight: bold;
+            font-size: 1.15rem;
             color: white;
             cursor: pointer;
-            font-size: 1.1rem;
             transition: 0.2s;
-            box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 7px 14px rgba(0,0,0,0.15);
+            letter-spacing: 1px;
         }
-
         .nav-btn:hover {
-            background: #ff6f9b;
+            background: #ff5f92;
             transform: scale(0.96);
         }
-
-        /* responsiveness */
-        @media (max-width: 700px) {
-            .photo-card {
-                width: 240px;
-                height: 320px;
-            }
-            .photo-strip {
-                width: 260px;
-                height: 350px;
-            }
-            .message-bubble {
-                font-size: 0.7rem;
-                white-space: nowrap;
-                padding: 5px 12px;
-                bottom: -25px;
-            }
-            .main-title {
-                font-size: 2rem;
-            }
+        .photo-indicator {
+            background: rgba(255, 220, 235, 0.85);
+            backdrop-filter: blur(8px);
+            padding: 8px 24px;
+            border-radius: 60px;
+            font-weight: 700;
+            color: #b13e66;
+            font-size: 1.1rem;
+            font-family: monospace;
         }
 
-        /* tiny sparkle animation */
-        @keyframes twinkle {
-            0% { opacity: 0.3; text-shadow: 0 0 0px pink;}
-            100% { opacity: 1; text-shadow: 0 0 8px #ffafcc;}
-        }
-        .sparkle-text {
-            animation: twinkle 1.2s infinite alternate;
-        }
-        
-        footer {
+        /* message board - all beautiful quotes */
+        .birthday-board {
             text-align: center;
+            background: rgba(255, 245, 250, 0.8);
+            backdrop-filter: blur(14px);
+            border-radius: 70px;
+            padding: 28px 25px;
+            margin-bottom: 45px;
+            width: 95%;
+            max-width: 880px;
+            border: 1px solid #ffbada;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        .title-birthday {
+            font-size: 3.5rem;
+            font-family: 'Pacifico', cursive;
+            background: linear-gradient(125deg, #ff5788, #ff8db3, #ffb0ca);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            text-shadow: 2px 5px 12px rgba(255, 115, 150, 0.3);
+        }
+        .heart-quote {
+            font-size: 1.05rem;
+            margin: 16px 0;
+            font-weight: 500;
+            color: #ac4370;
+            line-height: 1.55;
+            background: rgba(255,235,245,0.6);
+            border-radius: 55px;
+            padding: 12px 18px;
+        }
+        .micro-quotes {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 10px;
+        }
+        .micro-quotes span {
+            background: #fdeef5;
+            padding: 6px 18px;
+            border-radius: 40px;
             font-size: 0.8rem;
-            margin-top: 2rem;
-            color: #d46b94;
+            font-weight: 600;
+            color: #cf5c86;
+            backdrop-filter: blur(4px);
+        }
+
+        @media (max-width: 700px) {
+            .photo-card { width: 240px; height: 330px; }
+            .photo-ring { width: 260px; height: 360px; }
+            .floating-message { font-size: 0.7rem; padding: 6px 15px; white-space: nowrap; top: -42px; }
+            .floating-message::before, .floating-message::after { font-size: 0.9rem; }
+            .title-birthday { font-size: 2.3rem; }
+        }
+
+        /* sparkle overlay */
+        .sparkle {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            pointer-events: none;
+            z-index: 8;
+        }
+        footer {
+            margin-top: 20px;
+            font-weight: 500;
+            color: #be5982;
+            text-align: center;
+            background: rgba(255,235,245,0.5);
+            padding: 5px 15px;
+            border-radius: 80px;
+            font-size: 0.8rem;
         }
     </style>
 </head>
 <body>
 
-<div class="floating-emoji" id="floatingEmojis"></div>
+<div class="floating-zone" id="floatZone"></div>
+<div class="sparkle"></div>
 
-<button class="music-btn" id="musicToggleBtn">🔊🎵</button>
+<button class="music-control" id="musicBtn">🎵💖</button>
 
-<div class="carousel-container">
-    <div class="birthday-message">
-        <div class="main-title">🎂 Happy Birthday, Bestie! 🎀</div>
-        <div class="dedication-text">
-            💖 Happy Birthday to my forever favorite girl 💖 <br>
-            Thank you for being my best friend, my comfort person, and my biggest happiness. <br>
-            I hope your life stays filled with smiles, love, success, and endless cute moments. <br>
-            Stay the same beautiful person always 🌸✨ <br>
-            May your WiFi stay strong and your exams stay easy 😂 <br>
+<div class="carousel-stage">
+    <div class="birthday-board">
+        <div class="title-birthday">🎂 Happy Birthday Bestie! 🎂</div>
+        <div class="heart-quote">
+            💖 Happy Birthday to my forever favorite girl 💖<br>
+            Thank you for being my best friend, my comfort person, and my biggest happiness.<br>
+            I hope your life stays filled with smiles, love, success, and endless cute moments.<br>
+            Stay the same beautiful person always 🌸✨<br>
+            May your WiFi stay strong and your exams stay easy 😂<br>
             You’re my best friend because no one else can handle your drama 😭💖
         </div>
-        <div class="extra-quotes">
+        <div class="micro-quotes">
             <span>✨ You make ordinary days feel special 🌸</span>
             <span>💫 May your smile always stay this beautiful 💕</span>
             <span>🌷 Every memory with you is my favorite memory 🎂</span>
             <span>🌟 Keep shining and smiling always 💖</span>
-            <span>💎 You're the glitter to my chaos 😘</span>
-            <span>🌈 My happiness magnet 🧲💖</span>
+            <span>🎂 You’re my sunshine on cloudy days ☁️💛</span>
+            <span>💌 No one else gets my chaos like you do 🫶</span>
+            <span>🌈 With you, life is a fairytale 🦋✨</span>
+            <span>🍰 Sweetest soul I've ever known 💕</span>
         </div>
     </div>
 
-    <div class="photo-strip" id="photoStrip">
-        <!-- 7 photo cards will be generated dynamically via js -->
+    <div class="photo-ring" id="photoRing"></div>
+
+    <div class="nav-panel">
+        <button class="nav-btn" id="prevBtn"> ◀ PREV</button>
+        <div class="photo-indicator" id="indicator">💖 1 / 8 💖</div>
+        <button class="nav-btn" id="nextBtn"> NEXT ▶</button>
     </div>
-    
-    <div class="control-buttons">
-        <button class="nav-btn" id="prevBtn">◀ Prev</button>
-        <div class="photo-counter" id="photoCounter">Photo 1 / 7</div>
-        <button class="nav-btn" id="nextBtn">Next ▶</button>
-    </div>
-    <footer>💕 each photo holds a loving message just for you 💕</footer>
+    <footer>🌸 tap any photo — each memory floats with a sweet message just for YOU 🌸</footer>
 </div>
 
 <script>
-    // -------- CONFIGURATION ----------
-    // Use local image URLs as given: photo1.jpg to photo7.jpg
-    const imageUrls = [
-        "photo1.jpg",
-        "photo2.jpg",
-        "photo3.jpg",
-        "photo4.jpg",
-        "photo5.jpg",
-        "photo6.jpg",
-        "photo7.jpg"
+    // ----------------------------- CONFIGURATION : 8 PHOTOS (JPEG) ---------------------------------
+    const imagesList = [
+        "photo1.jpeg",
+        "photo2.jpeg",
+        "photo3.jpeg",
+        "photo4.jpeg",
+        "photo5.jpeg",
+        "photo6.jpeg",
+        "photo7.jpeg",
+        "photo8.jpeg"
     ];
     
-    // personalized messages matched to each photo (floating on each)
-    const floatingMessages = [
-        "✨ Forever my favorite human ✨",
+    // super cute floating messages for each photo (custom for 8 memories)
+    const uniqueMessages = [
+        "✨ My forever favorite human 💖",
         "🌸 You make ordinary days magical 🌸",
-        "💖 Thank you for being YOU 💖",
-        "🌟 May your dreams shine bright 🌟",
-        "🎂 My partner in crime! 🎂",
-        "💕 You are pure sunshine 💕",
-        "🌷 Stay beautiful & wild 🌷"
+        "💖 Thank you for being MY comfort person 💖",
+        "🌟 Your smile lights up my whole world 💫",
+        "🎂 Partner in crime since day one 😭💕",
+        "💕 Pure sunshine and endless joy 🌞",
+        "🌷 Stay beautiful, wild & happy forever 🎀",
+        "👑 Queen of my heart, always 💗✨"
     ];
     
-    // Additional playful messages added to vibe
-    // ensure every card gets a unique message:
-    const extraMsgSuffix = [
-        "😭💖 drama queen but my queen",
-        "💫 you sparkle endlessly",
-        "🎀 cutest bestie award",
-        "🍭 sweetness overload",
-        "💌 my happiness anchor",
-        "🫶 forever favorite girl",
-        "⭐️ star of my stories"
+    // extra affectionate touches
+    const extraAffection = [
+        "😭💖 besties forever",
+        "🌟 drama queen? MY queen 💅",
+        "🫶 love you endlessly",
+        "🍭 cutest human award",
+        "🎈 happiness amplifier",
+        "💌 my safe space",
+        "⭐️ star of my stories",
+        "🌈 you're my lucky charm 🍀"
     ];
     
-    // combine base messages with extra touch (just for fun)
-    const finalMessages = floatingMessages.map((msg, idx) => `${msg} ${extraMsgSuffix[idx]}`);
+    const finalMessages = uniqueMessages.map((msg, idx) => `${msg} ${extraAffection[idx]} 💗`);
     
-    // music url from local
-    const musicUrl = "song1.mp3";
+    const musicFile = "song1.mp3";
+    let totalPhotos = imagesList.length;  // now 8 photos
+    let currentIdx = 0;
+    const angleStep = 360 / totalPhotos; // 45 degrees per card
+    let ring = document.getElementById('photoRing');
+    let indicatorDiv = document.getElementById('indicator');
+    let autoSlideInterval = null;
     
-    // 3D rotation angle & auto slide timer
-    let currentIndex = 0;
-    const totalPhotos = imageUrls.length;
-    let autoRotateInterval = null;
-    let rotationAngle = 0; // each card offset angle increment 360/7 deg
-    const angleStep = 360 / totalPhotos; // ~51.428 deg
+    // 3D geometry radius (adjusted for 8 cards for better spacing)
+    const RADIUS = 350;
     
-    let stripElement = document.getElementById('photoStrip');
-    let counterDiv = document.getElementById('photoCounter');
-    
-    // ---------- Build 3D Photo Cards with Messages ----------
-    function buildCarousel() {
-        stripElement.innerHTML = '';
-        const radius = 320; // distance from center to make 3D immersive
-        
+    // build 3D carousel with each floating message attached to photo card
+    function build3DCarousel() {
+        ring.innerHTML = '';
         for (let i = 0; i < totalPhotos; i++) {
             const card = document.createElement('div');
             card.className = 'photo-card';
-            // compute angle for this card (rotateY)
-            const angle = angleStep * i;
-            const rad = angle * Math.PI / 180;
-            const x = Math.sin(rad) * radius;
-            const z = Math.cos(rad) * radius;
-            // transform: rotateY(angle) translateZ(radius) for positioning in 3D circle
-            card.style.transform = `rotateY(${angle}deg) translateZ(${radius}px)`;
+            const angleDeg = angleStep * i;
+            const rad = angleDeg * Math.PI / 180;
+            const xPos = Math.sin(rad) * RADIUS;
+            const zPos = Math.cos(rad) * RADIUS;
+            card.style.transform = `rotateY(${angleDeg}deg) translateZ(${RADIUS}px)`;
             card.style.backfaceVisibility = 'visible';
             
-            // Image element
-            const img = document.createElement('img');
-            img.src = imageUrls[i];
-            img.alt = `Birthday memory ${i+1}`;
-            img.onerror = () => {
-                // fallback in case images are missing (still show placeholder with message)
-                img.src = "https://placehold.co/600x800/FFD9E6/FF69B4?text=🌸+Bestie+🌸";
-                img.style.objectFit = "cover";
+            // image element with local JPEG
+            const imgElement = document.createElement('img');
+            imgElement.src = imagesList[i];
+            imgElement.alt = `Birthday memory ${i+1}`;
+            imgElement.onerror = () => {
+                // beautiful fallback in case image not found
+                imgElement.src = "https://placehold.co/600x800/FFCDE5/FF69B4?text=🌸+Bestie's+Smile+🌸";
+                imgElement.style.objectFit = "cover";
             };
             
-            // Message bubble
+            // floating message bubble (floating beautifully)
             const msgDiv = document.createElement('div');
-            msgDiv.className = 'message-bubble';
-            msgDiv.innerText = finalMessages[i] + " 💖";
+            msgDiv.className = 'floating-message';
+            msgDiv.innerText = finalMessages[i] + ' ✨';
             
-            card.appendChild(img);
+            card.appendChild(imgElement);
             card.appendChild(msgDiv);
-            stripElement.appendChild(card);
+            ring.appendChild(card);
         }
-        
-        // set initial rotation of container to face first card roughly
-        updateStripRotation();
+        rotateToIndex(0);
     }
     
-    function updateStripRotation() {
-        // rotation angle based on currentIndex: we want to show correct card facing front.
-        // since the camera is at 0,0 facing Z positive; to make card 'currentIndex' facing front,
-        // we rotate container by - (angle of that card). Angle of card i = angleStep * i
-        const targetCardAngle = angleStep * currentIndex;
-        // apply rotation to container so that card with index currentIndex faces forward:
-        stripElement.style.transform = `rotateY(${-targetCardAngle}deg)`;
-        counterDiv.innerText = `✨ Photo ${currentIndex+1} / ${totalPhotos} ✨`;
+    function rotateToIndex(index) {
+        const targetAngle = -(angleStep * index);
+        ring.style.transform = `rotateY(${targetAngle}deg)`;
+        indicatorDiv.innerHTML = `💖 ${index+1} / ${totalPhotos} 💖`;
     }
     
-    // navigation functions
     function nextPhoto() {
-        currentIndex = (currentIndex + 1) % totalPhotos;
-        updateStripRotation();
+        currentIdx = (currentIdx + 1) % totalPhotos;
+        rotateToIndex(currentIdx);
         resetAutoTimer();
-        generateConfettiHeart(); // add little extra floating emoji love on click
+        burstEmojiHeart(6);
+        // extra live spark on navigation
+        createFloatingEmoji(3);
     }
     
     function prevPhoto() {
-        currentIndex = (currentIndex - 1 + totalPhotos) % totalPhotos;
-        updateStripRotation();
+        currentIdx = (currentIdx - 1 + totalPhotos) % totalPhotos;
+        rotateToIndex(currentIdx);
         resetAutoTimer();
-        generateConfettiHeart();
+        burstEmojiHeart(6);
     }
     
-    let autoTimer;
-    function startAutoSlide() {
-        if (autoTimer) clearInterval(autoTimer);
-        autoTimer = setInterval(() => {
+    // auto slide every 5 seconds as requested
+    function startAutoRotation() {
+        if (autoSlideInterval) clearInterval(autoSlideInterval);
+        autoSlideInterval = setInterval(() => {
             nextPhoto();
         }, 5000);
     }
     
     function resetAutoTimer() {
-        if (autoTimer) {
-            clearInterval(autoTimer);
-            startAutoSlide();
+        if (autoSlideInterval) {
+            clearInterval(autoSlideInterval);
+            startAutoRotation();
         }
     }
     
-    // ---------- Floating Hearts & Emojis (continuous) ----------
-    const emojiList = ['❤️', '💖', '🌸', '✨', '🎂', '💕', '😘', '🥳', '🎀', '💫', '🌟', '🌷', '💗', '🎉', '🫶', '💋', '🤍', '💓', '🍰', '🎈'];
-    function createFloatingEmoji() {
-        const container = document.getElementById('floatingEmojis');
-        const emoji = document.createElement('div');
-        emoji.classList.add('emoji-item');
-        const randomEmoji = emojiList[Math.floor(Math.random() * emojiList.length)];
-        emoji.innerText = randomEmoji;
-        const leftPos = Math.random() * 100; // vw % relative
-        const duration = 6 + Math.random() * 5;
-        const size = 1.2 + Math.random() * 1.5;
-        emoji.style.left = leftPos + '%';
-        emoji.style.fontSize = `${size}rem`;
-        emoji.style.animationDuration = `${duration}s`;
-        emoji.style.animationDelay = `${Math.random() * 2}s`;
-        container.appendChild(emoji);
+    // ---------- FLOATING EMOJIS + HEARTS (continuous rain & burst) ----------
+    const emojisArray = ['❤️', '💖', '🌸', '✨', '🎂', '💕', '😘', '🥳', '🎀', '💫', '🌟', '🌷', '💗', '🎉', '🫶', '💋', '🍰', '🎈', '💌', '💓', '⭐', '💞', '💝', '🎁'];
+    
+    function createFloatingEmoji(burstCount = 1) {
+        const container = document.getElementById('floatZone');
+        for(let n=0; n<burstCount; n++) {
+            const el = document.createElement('div');
+            el.classList.add('float-item');
+            const randomEmoji = emojisArray[Math.floor(Math.random() * emojisArray.length)];
+            el.innerText = randomEmoji;
+            const leftPos = Math.random() * 100;
+            const duration = 7 + Math.random() * 6;
+            const size = 1.3 + Math.random() * 1.8;
+            el.style.left = leftPos + '%';
+            el.style.fontSize = `${size}rem`;
+            el.style.animationDuration = `${duration}s`;
+            el.style.animationDelay = `${Math.random() * 3}s`;
+            container.appendChild(el);
+            setTimeout(() => { if(el && el.remove) el.remove(); }, duration * 1000);
+        }
+    }
+    
+    function burstEmojiHeart(count = 12) {
+        for (let i = 0; i < count; i++) {
+            setTimeout(() => createFloatingEmoji(1), i * 70);
+        }
+    }
+    
+    let continuousFloat;
+    function startContinuousFloating() {
+        if (continuousFloat) clearInterval(continuousFloat);
+        continuousFloat = setInterval(() => {
+            createFloatingEmoji(1);
+        }, 550);
+        // initial happy burst
+        for(let i=0;i<18;i++) setTimeout(()=>createFloatingEmoji(1), i*80);
+    }
+    
+    // spark effect on each photo click (extra love)
+    function attachCardClickEffect() {
         setTimeout(() => {
-            if(emoji && emoji.remove) emoji.remove();
-        }, duration * 1000);
+            const cards = document.querySelectorAll('.photo-card');
+            cards.forEach(card => {
+                card.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    burstEmojiHeart(14);
+                    // Also wiggle message for delight
+                    const msg = card.querySelector('.floating-message');
+                    if(msg) {
+                        msg.style.transform = "translateX(-50%) translateY(-20px) scale(1.05)";
+                        setTimeout(() => {
+                            if(msg) msg.style.transform = "";
+                        }, 350);
+                    }
+                });
+            });
+        }, 150);
     }
     
-    // extra burst of hearts when click nav or auto slide
-    function generateConfettiHeart(burstCount = 8) {
-        for (let i = 0; i < burstCount; i++) {
-            setTimeout(() => {
-                createFloatingEmoji();
-            }, i * 80);
-        }
-    }
+    // ------------- MUSIC HANDLING -------------
+    let bgMusic = null;
+    let isPlaying = false;
+    const musicBtn = document.getElementById('musicBtn');
     
-    let floatInterval;
-    function startFloatingEmojis() {
-        if (floatInterval) clearInterval(floatInterval);
-        floatInterval = setInterval(() => {
-            createFloatingEmoji();
-        }, 800);
-        // initial burst
-        for(let i=0;i<12;i++) setTimeout(()=>createFloatingEmoji(), i*100);
-    }
-    
-    // ------------- AUDIO PLAYER ----------
-    let audio = null;
-    let isMusicPlaying = false;
-    const musicBtn = document.getElementById('musicToggleBtn');
-    
-    function initAudio() {
-        audio = new Audio(musicUrl);
-        audio.loop = true;
-        audio.volume = 0.55;
-        audio.preload = 'auto';
-        audio.onerror = () => {
-            console.warn("Music file song1.mp3 not found, but background fun continues!");
-            musicBtn.style.opacity = '0.5';
-            musicBtn.innerText = '🔇❌';
+    function initMusic() {
+        bgMusic = new Audio(musicFile);
+        bgMusic.loop = true;
+        bgMusic.volume = 0.55;
+        bgMusic.preload = 'auto';
+        bgMusic.onerror = () => {
+            musicBtn.innerHTML = '🔇🎶';
+            musicBtn.style.opacity = '0.6';
         };
     }
     
     function toggleMusic() {
-        if (!audio) initAudio();
-        if (isMusicPlaying) {
-            audio.pause();
+        if (!bgMusic) initMusic();
+        if (isPlaying) {
+            bgMusic.pause();
             musicBtn.innerHTML = '🔇🎵';
-            isMusicPlaying = false;
+            isPlaying = false;
         } else {
-            audio.play().catch(e => {
-                console.log("Autoplay blocked? user interaction needed.");
-                // In case of autoplay policies, but button click allows it.
+            bgMusic.play().catch(e => {
+                console.log("autoplay blocked, use interaction");
             });
-            musicBtn.innerHTML = '🎵🔊';
-            isMusicPlaying = true;
+            musicBtn.innerHTML = '🎵💖';
+            isPlaying = true;
         }
     }
     
-    // handle first interaction for audio (since autoplay restrictions)
-    function enableAudioOnFirstTouch() {
-        if (!isMusicPlaying && audio && !audio.paused === false) {
-            // attempt to play after any user action on body, but music button also works.
-            audio.play().then(() => {
-                isMusicPlaying = true;
-                musicBtn.innerHTML = '🎵🔊';
+    // attempt to start music on first user interaction gracefully
+    let musicStartedByUser = false;
+    function tryAutoPlayMusic() {
+        if (!musicStartedByUser && bgMusic && !isPlaying) {
+            bgMusic.play().then(() => {
+                isPlaying = true;
+                musicBtn.innerHTML = '🎵💖';
+                musicStartedByUser = true;
             }).catch(()=>{});
         }
-        document.removeEventListener('click', enableAudioOnFirstTouch);
-        document.removeEventListener('touchstart', enableAudioOnFirstTouch);
+        document.removeEventListener('click', tryAutoPlayMusic);
+        document.removeEventListener('touchstart', tryAutoPlayMusic);
     }
     
-    // ---------- add some extra floating sparkle hearts periodically ----------
-    function extraHeartRain() {
-        setInterval(() => {
-            for (let i=0;i<3;i++) createFloatingEmoji();
-        }, 3000);
-    }
-    
-    // ---------- initial loading + also handle missing images gracefully ----------
-    window.addEventListener('load', () => {
-        buildCarousel();
-        startAutoSlide();
-        startFloatingEmojis();
-        extraHeartRain();
-        initAudio();
+    // ---------- extra glam & initialization ----------
+    function init() {
+        build3DCarousel();       // create 8 cards with floating messages
+        startAutoRotation();     // auto change every 5 sec
+        startContinuousFloating();
+        initMusic();
         
-        // pre-warm images maybe showing friendly placeholder if needed, but we trust local files
-        // attach event listeners to prev/next
+        // attach navigation events
         document.getElementById('prevBtn').addEventListener('click', prevPhoto);
         document.getElementById('nextBtn').addEventListener('click', nextPhoto);
         musicBtn.addEventListener('click', toggleMusic);
         
-        // Auto start music only after user first tap anywhere? Respect browser policy:
-        // but music button will let them start, but we also can add a one-time global interaction for auto start optional.
-        // We'll make it friendly: first time any click on carousel or buttons will optionally start music if not started.
-        const tryAutoPlay = () => {
-            if (audio && !isMusicPlaying) {
-                audio.play().then(() => {
-                    isMusicPlaying = true;
-                    musicBtn.innerHTML = '🎵🔊';
-                }).catch(e=>{});
-            }
-            document.removeEventListener('click', tryAutoPlay);
-            document.removeEventListener('touchstart', tryAutoPlay);
-        };
-        document.addEventListener('click', tryAutoPlay);
-        document.addEventListener('touchstart', tryAutoPlay);
+        // initial heart burst after load
+        setTimeout(() => {
+            burstEmojiHeart(25);
+        }, 400);
         
-        // Additional sparkle on auto rotation next/prev + burst when rotate
-        const originalNext = nextPhoto;
-        window.nextPhoto = nextPhoto;
-        // No need to override, we already call generateConfettiHeart inside nextPhoto/prevPhoto
-        // Enhance: also on timer rotation we already call nextPhoto -> confetti
-    });
+        attachCardClickEffect();
+        
+        // auto-music trigger when user first clicks anywhere (polite)
+        document.addEventListener('click', tryAutoPlayMusic);
+        document.addEventListener('touchstart', tryAutoPlayMusic);
+        
+        // extra floating treat: every 2 sec random love
+        setInterval(() => {
+            if(Math.random() > 0.65) createFloatingEmoji(1);
+        }, 1700);
+    }
     
-    // Small manual adjustment: add floating messages more vibrant + roll
-    // inject style for glow
-    const style = document.createElement('style');
-    style.textContent = `
-        .photo-card .message-bubble {
-            background: rgba(255,235,245,0.95);
-            font-weight: bold;
-            backdrop-filter: blur(8px);
-            border-radius: 40px;
-            box-shadow: 0 8px 18px rgba(255,105,150,0.3);
-            transition: all 0.25s ease;
-            font-size: 0.85rem;
+    // sparkle stars generation in background
+    const sparkDiv = document.querySelector('.sparkle');
+    for (let i=0;i<65;i++) {
+        let star = document.createElement('div');
+        star.innerHTML = '✨';
+        star.style.position = 'absolute';
+        star.style.left = Math.random() * 100 + '%';
+        star.style.top = Math.random() * 100 + '%';
+        star.style.fontSize = (Math.random() * 20 + 6) + 'px';
+        star.style.opacity = 0.3 + Math.random() * 0.5;
+        star.style.animation = 'twinkleStar 3s infinite alternate';
+        star.style.pointerEvents = 'none';
+        sparkDiv.appendChild(star);
+    }
+    
+    const styleSheet = document.createElement("style");
+    styleSheet.textContent = `
+        @keyframes twinkleStar {
+            0% { opacity: 0.2; transform: scale(0.8);}
+            100% { opacity: 0.9; transform: scale(1.2);}
         }
-        @media (max-width:550px) {
-            .message-bubble { font-size: 0.7rem; white-space: nowrap; padding: 4px 10px; }
+        .photo-card {
+            transition: transform 0.4s, box-shadow 0.3s;
         }
-        .birthday-message .dedication-text {
-            font-size: 1rem;
-        }
-        .photo-card:hover {
-            filter: brightness(1.02);
-            box-shadow: 0 30px 55px rgba(0,0,0,0.3), 0 0 0 8px #ffc0dd;
-        }
-        ::-webkit-scrollbar {
-            width: 6px;
-            background: #ffe0ec;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #ff8db3;
-            border-radius: 10px;
+        .floating-message {
+            font-weight: 700;
+            background: radial-gradient(circle at 20% 30%, #fff0f5, #ffe6f0);
+            border: 1px solid rgba(255,140,170,0.6);
         }
     `;
-    document.head.appendChild(style);
+    document.head.appendChild(styleSheet);
     
-    // additional: generate heart bursts when page fully loaded for welcome effect
-    setTimeout(() => {
-        for(let i=0;i<25;i++) {
-            setTimeout(()=>createFloatingEmoji(), i*70);
-        }
-    }, 500);
+    // start everything after DOM ready
+    window.addEventListener('DOMContentLoaded', init);
     
-    // also, ensure touch devices won't break, plus keep the strip interactive.
-    // if images 404s add a small onerror, but we add nice alt placeholder
-    // additionally add parameter to confirm photo count, rebuild on any resize? not necessary.
+    // additional reload for consistent messaging
+    window.addEventListener('load', () => {
+        burstEmojiHeart(30);
+        // refresh visible floating messages if any re-render issue
+        setInterval(() => {
+            const msgs = document.querySelectorAll('.floating-message');
+            if(msgs.length > 0 && msgs[0]) {
+                // persistent animation lives
+            }
+        }, 2000);
+    });
 </script>
 </body>
 </html>
