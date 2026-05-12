@@ -2,610 +2,664 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <title>🎀 Happy Birthday My Forever Bestie! ✨ | Slideshow Surprise</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&family=Pacifico&family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover">
+    <title>Happy Birthday Kumkum 💖 | 3D Wishes from Aarju</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            user-select: none;
         }
 
         body {
             min-height: 100vh;
-            background: radial-gradient(circle at 10% 30%, #ffdde1, #f9c9e2, #ffb3d1);
-            font-family: 'Poppins', 'Quicksand', sans-serif;
+            background: radial-gradient(circle at 20% 30%, #0a0f1e, #1a1a2e, #2a1a3a);
+            font-family: 'Poppins', 'Segoe UI', 'Quicksand', system-ui, -apple-system, sans-serif;
             overflow-x: hidden;
-            position: relative;
             display: flex;
-            justify-content: center;
             align-items: center;
-            padding: 20px;
+            justify-content: center;
+            padding: 30px 20px;
+            position: relative;
         }
 
-        /* animated background gradient */
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at 20% 40%, rgba(255,200,220,0.4), rgba(255,220,240,0.2));
-            pointer-events: none;
-            z-index: 0;
-        }
-
-        /* floating emojis layer - soft, enchanting */
-        .floating-zone {
+        /* 8D Floating Emojis Container - covers everything, goes over all elements */
+        .floating-emojis-8d {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
             pointer-events: none;
-            z-index: 15;
+            z-index: 9999;
             overflow: hidden;
         }
 
-        .float-item {
+        .emoji-8d {
             position: absolute;
-            font-size: 1.8rem;
-            animation: floatGlide 12s linear forwards;
-            filter: drop-shadow(0 5px 8px rgba(0,0,0,0.2));
+            font-size: 2rem;
             opacity: 0.85;
+            pointer-events: none;
+            filter: drop-shadow(0 8px 12px rgba(0,0,0,0.3));
+            will-change: transform;
+            animation: float3Diverse linear infinite;
+            z-index: 9999;
         }
 
-        @keyframes floatGlide {
+        /* 8D animation: emojis come from random edges and travel diagonally, swirling */
+        @keyframes float3Diverse {
             0% {
-                transform: translateY(110vh) rotate(0deg) scale(0.5);
+                transform: translate(0, 0) rotate(0deg) scale(0.4);
                 opacity: 0;
             }
             15% {
-                opacity: 0.85;
+                opacity: 0.95;
+            }
+            50% {
+                opacity: 1;
+                filter: drop-shadow(0 12px 18px rgba(255,100,100,0.5));
             }
             85% {
-                opacity: 0.85;
+                opacity: 0.9;
             }
             100% {
-                transform: translateY(-15vh) rotate(360deg) scale(1.2);
+                transform: translate(var(--endX, 250px), var(--endY, -200px)) rotate(720deg) scale(1.1);
                 opacity: 0;
             }
         }
 
-        /* MAIN SLIDESHOW CONTAINER - elegant */
-        .slideshow-container {
+        /* Main 3D Scene Container */
+        .scene-3d {
+            perspective: 1200px;
             width: 100%;
-            max-width: 1200px;
+            max-width: 950px;
             margin: 0 auto;
+            z-index: 100;
             position: relative;
-            z-index: 10;
-            background: rgba(255, 240, 245, 0.4);
-            backdrop-filter: blur(3px);
-            border-radius: 60px;
-            padding: 25px 20px 35px;
-            box-shadow: 0 25px 45px rgba(0,0,0,0.2);
         }
 
-        /* message board - top heartfelt quotes */
-        .birthday-board {
+        /* 3D Glass Card with Floating Effect */
+        .birthday-card-3d {
+            position: relative;
+            background: rgba(20, 15, 35, 0.65);
+            backdrop-filter: blur(16px);
+            border-radius: 85px;
+            box-shadow: 0 40px 70px rgba(0, 0, 0, 0.5), 0 0 0 2px rgba(255, 200, 250, 0.4), 0 0 0 8px rgba(255, 105, 180, 0.2);
+            padding: 2.5rem 2rem 3rem;
             text-align: center;
-            background: rgba(255, 245, 250, 0.88);
-            backdrop-filter: blur(14px);
-            border-radius: 70px;
-            padding: 20px 25px;
-            margin-bottom: 35px;
-            border: 1px solid #ffbada;
-            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+            transform: rotateX(4deg) rotateY(1deg) translateZ(20px);
+            transition: all 0.4s ease;
+            animation: card3DWave 5s ease-in-out infinite;
+            border: 1px solid rgba(255, 220, 250, 0.3);
         }
-        .title-birthday {
-            font-size: 3rem;
-            font-family: 'Pacifico', cursive;
-            background: linear-gradient(125deg, #ff5788, #ff8db3, #ffb0ca);
+
+        .birthday-card-3d:hover {
+            transform: rotateX(2deg) rotateY(2deg) translateY(-12px) translateZ(30px);
+            box-shadow: 0 55px 85px rgba(0, 0, 0, 0.6), 0 0 0 3px rgba(255, 180, 220, 0.7);
+        }
+
+        @keyframes card3DWave {
+            0% { transform: rotateX(4deg) rotateY(1deg) translateY(0px) translateZ(20px); }
+            50% { transform: rotateX(3deg) rotateY(2deg) translateY(-8px) translateZ(25px); }
+            100% { transform: rotateX(4deg) rotateY(1deg) translateY(0px) translateZ(20px); }
+        }
+
+        /* Typography with vibrant gradients & 3D text shadow */
+        .greeting {
+            font-size: 4.8rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #FFD166, #FF6B6B, #FF006E, #FFB347);
             background-clip: text;
             -webkit-background-clip: text;
             color: transparent;
-            text-shadow: 2px 5px 12px rgba(255, 115, 150, 0.3);
+            margin-bottom: 0.5rem;
+            letter-spacing: -1px;
+            text-shadow: 3px 3px 20px rgba(0,0,0,0.3);
+            transform: translateZ(15px);
         }
-        .heart-quote {
-            font-size: 0.98rem;
-            margin: 12px 0;
-            font-weight: 500;
-            color: #ac4370;
-            line-height: 1.55;
-            background: rgba(255,235,245,0.6);
-            border-radius: 55px;
-            padding: 10px 18px;
+
+        .bestie-name {
+            font-size: 2.4rem;
+            font-weight: 800;
+            background: linear-gradient(145deg, #FFB3C6, #FF8FAB, #FF4D6D);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            display: inline-block;
+            margin-bottom: 0.6rem;
+            text-shadow: 2px 2px 12px rgba(0,0,0,0.2);
         }
-        .micro-quotes {
+
+        .from-sign {
+            font-size: 1.5rem;
+            background: rgba(255, 220, 240, 0.2);
+            backdrop-filter: blur(8px);
+            display: inline-block;
+            padding: 8px 28px;
+            border-radius: 100px;
+            margin-bottom: 28px;
+            font-weight: 700;
+            color: #FFD6E8;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+            border: 1px solid rgba(255,200,220,0.5);
+        }
+
+        /* message container - no frames, floating freely, 3D typography */
+        .floating-messages {
             display: flex;
-            flex-wrap: wrap;
+            flex-direction: column;
+            gap: 25px;
+            margin: 30px 0;
+        }
+
+        .msg-block {
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(12px);
+            border-radius: 70px;
+            padding: 20px 25px;
+            transition: all 0.3s;
+            transform: translateZ(10px);
+            border: 1px solid rgba(255, 220, 200, 0.5);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+
+        .msg-block:hover {
+            transform: scale(1.02) translateZ(18px);
+            background: rgba(0, 0, 0, 0.55);
+            border-color: rgba(255, 150, 200, 0.8);
+        }
+
+        .heart-msg {
+            font-size: 1.9rem;
+            font-weight: 800;
+            background: linear-gradient(125deg, #FFE6F0, #FFB3C6, #FF6B6B);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            line-height: 1.4;
+            display: flex;
+            align-items: center;
             justify-content: center;
-            gap: 10px;
-            margin-top: 10px;
-        }
-        .micro-quotes span {
-            background: #fdeef5;
-            padding: 5px 16px;
-            border-radius: 40px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            color: #cf5c86;
+            flex-wrap: wrap;
+            gap: 12px;
         }
 
-        /* SLIDE AREA - each photo appears one by one */
-        .slide-area {
-            position: relative;
-            width: 100%;
-            max-width: 900px;
-            margin: 0 auto;
-            overflow: hidden;
-            border-radius: 48px;
-            box-shadow: 0 30px 45px rgba(0,0,0,0.3);
-            background: #ffeef4;
-            aspect-ratio: 4 / 3;
+        .cute-quote {
+            font-size: 1.7rem;
+            font-weight: 700;
+            background: linear-gradient(130deg, #F9D6E0, #FFB8D1, #FF8FAB);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            padding: 12px 10px;
+            font-style: italic;
         }
 
-        .slides-wrapper {
-            position: relative;
-            width: 100%;
-            height: 100%;
+        .special-message {
+            font-size: 1.55rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #FFD6A5, #FFB347, #FF6F61);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            padding: 14px 18px;
+            border-left: 5px solid #FF8E9E;
+            border-right: 5px solid #FF8E9E;
         }
 
-        .slide {
-            position: absolute;
+        /* 3D Glowing Button */
+        .btn-3d {
+            border: none;
+            font-family: 'Poppins', sans-serif;
+            padding: 18px 42px;
+            border-radius: 80px;
+            font-size: 1.35rem;
+            font-weight: 800;
+            cursor: pointer;
+            background: linear-gradient(125deg, #FF4D6D, #FF1E4D, #C9184A);
+            color: white;
+            box-shadow: 0 20px 35px rgba(0, 0, 0, 0.4), 0 0 15px rgba(255, 80, 120, 0.6);
+            transition: all 0.25s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            letter-spacing: 1px;
+            margin-top: 15px;
+            transform: translateZ(20px);
+        }
+
+        .btn-3d:hover {
+            transform: scale(1.06) translateY(-6px) translateZ(30px);
+            box-shadow: 0 28px 40px rgba(255, 30, 77, 0.6);
+            background: linear-gradient(125deg, #FF1E4D, #E60039, #A3143D);
+        }
+
+        .btn-3d:active {
+            transform: scale(0.98);
+        }
+
+        /* Fullscreen Video Overlay - NO DOWNLOAD BUTTON */
+        .video-overlay {
+            position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            opacity: 0;
-            transition: opacity 0.8s ease-in-out, transform 0.6s ease;
-            transform: scale(0.98);
-            border-radius: 48px;
-            overflow: hidden;
-        }
-
-        .slide.active {
-            opacity: 1;
-            transform: scale(1);
-            z-index: 2;
-        }
-
-        .slide img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 48px;
-            display: block;
-        }
-
-        /* PHOTO CAPTION: 1 unique line per photo (from the poem/messages provided) */
-        .photo-caption {
-            position: absolute;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: linear-gradient(135deg, rgba(255, 245, 250, 0.96), rgba(255, 235, 245, 0.96));
-            backdrop-filter: blur(20px);
-            padding: 12px 28px;
-            border-radius: 60px;
-            font-weight: 700;
-            font-size: 1rem;
-            font-family: 'Quicksand', 'Poppins', sans-serif;
-            color: #c52566;
-            text-align: center;
-            box-shadow: 0 12px 25px rgba(0,0,0,0.2);
-            letter-spacing: 0.4px;
-            z-index: 20;
-            border: 1px solid #ffbfda;
-            pointer-events: none;
-            white-space: normal;
-            max-width: 85%;
-            line-height: 1.4;
-            text-shadow: 0 1px 1px white;
-        }
-
-        @media (max-width: 680px) {
-            .photo-caption { font-size: 0.75rem; padding: 8px 16px; bottom: 20px; }
-            .title-birthday { font-size: 2rem; }
-            .slide-area { border-radius: 32px; }
-        }
-
-        /* navigation buttons (clean, functional) */
-        .nav-controls {
+            background: rgba(0, 0, 0, 0.96);
+            backdrop-filter: blur(28px);
+            z-index: 20000;
             display: flex;
-            justify-content: center;
-            gap: 25px;
-            margin-top: 35px;
             align-items: center;
+            justify-content: center;
+            visibility: hidden;
+            opacity: 0;
+            transition: visibility 0.2s, opacity 0.4s ease;
         }
-        .nav-btn {
-            background: #ff85ae;
+
+        .video-overlay.active {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .video-frame {
+            width: 92%;
+            max-width: 1300px;
+            background: #000;
+            border-radius: 55px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 40px 70px rgba(0, 0, 0, 0.8), 0 0 0 6px rgba(255, 220, 150, 0.8), 0 0 0 14px rgba(255, 105, 180, 0.5);
+        }
+
+        .video-frame video {
+            width: 100%;
+            height: auto;
+            max-height: 85vh;
+            display: block;
+            outline: none;
+        }
+
+        .close-video {
+            position: absolute;
+            top: 35px;
+            right: 45px;
+            background: rgba(0,0,0,0.85);
+            backdrop-filter: blur(12px);
             border: none;
-            padding: 10px 32px;
-            border-radius: 50px;
-            font-weight: bold;
-            font-size: 1.1rem;
+            font-size: 2.2rem;
             color: white;
             cursor: pointer;
-            transition: 0.2s;
-            box-shadow: 0 7px 14px rgba(0,0,0,0.15);
-            letter-spacing: 1px;
-        }
-        .nav-btn:hover {
-            background: #ff5f92;
-            transform: scale(0.96);
-        }
-        .slide-counter {
-            background: rgba(255, 220, 235, 0.85);
-            backdrop-filter: blur(8px);
-            padding: 8px 24px;
             border-radius: 60px;
-            font-weight: 700;
-            color: #b13e66;
-            font-size: 1.1rem;
-        }
-        footer {
-            text-align: center;
-            margin-top: 30px;
-            font-weight: 500;
-            color: #be5982;
-            background: rgba(255,235,245,0.5);
-            padding: 5px 15px;
-            border-radius: 80px;
-            display: inline-block;
-            font-size: 0.75rem;
-        }
-        .footer-center {
-            text-align: center;
+            width: 60px;
+            height: 60px;
+            font-weight: bold;
+            transition: 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 20010;
+            box-shadow: 0 5px 20px black;
         }
 
-        /* sparkle background */
-        .sparkle {
-            position: fixed;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            pointer-events: none;
-            z-index: 5;
+        .close-video:hover {
+            background: #ff2e63;
+            transform: scale(1.08);
+        }
+
+        footer {
+            margin-top: 35px;
+            background: rgba(0,0,0,0.3);
+            backdrop-filter: blur(8px);
+            display: inline-block;
+            padding: 8px 28px;
+            border-radius: 60px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: #FFCDE0;
+        }
+
+        @media (max-width: 650px) {
+            .greeting {
+                font-size: 2.8rem;
+            }
+            .bestie-name {
+                font-size: 1.8rem;
+            }
+            .heart-msg {
+                font-size: 1.3rem;
+            }
+            .cute-quote {
+                font-size: 1.2rem;
+            }
+            .special-message {
+                font-size: 1.1rem;
+            }
+            .btn-3d {
+                padding: 14px 30px;
+                font-size: 1.1rem;
+            }
+            .msg-block {
+                padding: 16px 18px;
+            }
+            .close-video {
+                top: 20px;
+                right: 20px;
+                width: 48px;
+                height: 48px;
+                font-size: 1.8rem;
+            }
+        }
+
+        /* Responsive text wrap */
+        @media (max-width: 480px) {
+            .greeting {
+                font-size: 2.3rem;
+            }
+            .heart-msg {
+                font-size: 1.15rem;
+            }
         }
     </style>
 </head>
 <body>
 
-<div class="floating-zone" id="floatZone"></div>
-<div class="sparkle"></div>
+<!-- 8D Floating Emojis that go EVERYWHERE (over messages, over button, over everything) -->
+<div class="floating-emojis-8d" id="floatingEmojis8d"></div>
 
-<!-- NO MUSIC BUTTON - music always on automatically -->
+<!-- Main 3D Scene -->
+<div class="scene-3d">
+    <div class="birthday-card-3d">
+        <div class="greeting">🎀 HAPPY BIRTHDAY 🎀</div>
+        <div class="bestie-name">✨ My Dearest Kumkum ✨</div>
+        <div class="from-sign">🌸 From Aarju with infinite love 🌸</div>
 
-<div class="slideshow-container">
-    <div class="birthday-board">
-        <div class="title-birthday">🎂 Happy Birthday Bestie! 🎂</div>
-        <div class="heart-quote">
-            ❤️ Happy Birthday to my forever favorite girl ❤️<br>
-            Thank you for being my best friend, my comfort person, and my biggest happiness.<br>
-            I hope your life stays filled with smiles, success, and endless cute moments.<br>
-            Stay the same beautiful person always 🌟✨
+        <!-- Messages flowing naturally, no frame border, 3d style -->
+        <div class="floating-messages">
+            <div class="msg-block">
+                <div class="heart-msg">
+                    😍 You are the melody of my happiest days! 😍
+                </div>
+            </div>
+            <div class="msg-block">
+                <div class="heart-msg">
+                    ❤️ Every moment with you is a celebration — you deserve the universe. ❤️
+                </div>
+            </div>
+            <div class="msg-block">
+                <div class="cute-quote">
+                    “Kumkum, you are magic, you are grace, you are my forever bestie.” 💖
+                </div>
+            </div>
+            <div class="msg-block">
+                <div class="special-message">
+                    🎵 Aarju’s heart to yours: May your year be filled with laughter, adventures, and endless sparkles. 
+                    You are a queen, today and always! 🥰
+                </div>
+            </div>
         </div>
-        <div class="micro-quotes">
-            <span>✨ You make ordinary days feel special ❤️</span>
-            <span>💫 May your smile always stay this beautiful 💕</span>
-            <span>🌷 Every memory with you is my favorite memory 🎂</span>
-            <span>🌟 Keep shining and smiling always 💖</span>
-            <span>☀️ You're my sunshine on cloudy days ❤️</span>
-            <span>🫶 No one else gets my chaos like you do ❤️</span>
-        </div>
-    </div>
 
-    <!-- SLIDESHOW AREA: one photo at a time with 1 unique line per photo -->
-    <div class="slide-area">
-        <div class="slides-wrapper" id="slidesWrapper"></div>
+        <button class="btn-3d" id="specialVideoBtn">
+            🎥✨ SPECIAL VIDEO FOR SPECIAL GIRL ✨🎥
+        </button>
+        <footer>💗 with love, Aarju 💗</footer>
     </div>
+</div>
 
-    <div class="nav-controls">
-        <button class="nav-btn" id="prevSlideBtn"> ◀ PREV</button>
-        <div class="slide-counter" id="slideCounter">💖 1 / 8 💖</div>
-        <button class="nav-btn" id="nextSlideBtn"> NEXT ▶</button>
-    </div>
-    <div class="footer-center">
-        <footer>🌸 each memory slides with a sweet message — music plays forever for you 🌸</footer>
+<!-- Fullscreen Video Overlay (No Download Button) -->
+<div id="videoOverlay" class="video-overlay">
+    <button class="close-video" id="closeVideoBtn">✕</button>
+    <div class="video-frame">
+        <video id="birthdayVideo" controls playsinline preload="auto">
+            <source src="kumkumbdyvdo.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
     </div>
 </div>
 
 <script>
-    // ----------------------------- 8 PHOTOS (JPEG) -----------------------------
-    const imagesList = [
-        "photo1.jpeg",
-        "photo2.jpeg",
-        "photo3.jpeg",
-        "photo4.jpeg",
-        "photo5.jpeg",
-        "photo6.jpeg",
-        "photo7.jpeg",
-        "photo8.jpeg"
-    ];
-    
-    // 1 UNIQUE LINE PER PHOTO exactly from your requested messages (spread across 8 slides)
-    // Following your provided lines, each slide gets one beautiful line
-    const slideMessages = [
-        "✨ Happy Birthday to my forever favorite girl 💖 ✨",
-        "🌸 Thank you for being my best friend, my comfort person, and my biggest happiness. I hope your life stays filled with smiles, love, success, and endless cute moments. Stay the same beautiful person always 🌸✨",
-        "😂 May your WiFi stay strong and your exams stay easy 😂",
-        "😭💖 You’re my best friend because no one else can handle your drama 😭💖",
-        "🌸 You make ordinary days feel special 🌸",
-        "💫 May your smile always stay this beautiful 💫💕",
-        "🎂🌷 Every memory with you is my favorite memory 🎂🌷",
-        "💖 Keep shining and smiling always 💖"
-    ];
-    
-    // Ensure we have exactly 8 messages (all unique)
-    const totalSlides = imagesList.length;
-    let currentIndex = 0;
-    let autoSlideInterval = null;
-    let slides = [];
-    
-    const slidesWrapper = document.getElementById('slidesWrapper');
-    const slideCounterDiv = document.getElementById('slideCounter');
-    const prevBtn = document.getElementById('prevSlideBtn');
-    const nextBtn = document.getElementById('nextSlideBtn');
-    
-    // Build slides with proper caption
-    function buildSlides() {
-        slidesWrapper.innerHTML = '';
-        slides = [];
-        for (let i = 0; i < totalSlides; i++) {
-            const slideDiv = document.createElement('div');
-            slideDiv.className = 'slide';
-            if (i === 0) slideDiv.classList.add('active');
-            
-            const img = document.createElement('img');
-            img.src = imagesList[i];
-            img.alt = `Birthday magic ${i+1}`;
-            img.onerror = () => {
-                // Beautiful fallback in case image missing
-                img.src = "https://placehold.co/1000x800/FFCDE5/FF69B4?text=🌸+Bestie+Smile+🌸";
-                img.style.objectFit = "cover";
-            };
-            
-            // Caption: one special line per photo
-            const captionSpan = document.createElement('div');
-            captionSpan.className = 'photo-caption';
-            // Ensure message matches index
-            let msg = slideMessages[i % slideMessages.length];
-            // add a little sparkle
-            captionSpan.innerText = msg + " 💖";
-            
-            slideDiv.appendChild(img);
-            slideDiv.appendChild(captionSpan);
-            slidesWrapper.appendChild(slideDiv);
-            slides.push(slideDiv);
+    (function() {
+        // ---------- 8D FLOATING EMOJIS - ALL DIRECTIONS, SMOOTH, OVER EVERYTHING ----------
+        const megaEmojis = [
+            '🎂', '🎈', '🎉', '✨', '💖', '🌸', '💐', '🎀', '🥳', '💕', 
+            '🎁', '🍰', '🌟', '💗', '🦋', '🌺', '🌷', '⭐', '💃', '🕊️',
+            '💝', '💘', '🎊', '🎵', '💎', '🍭', '🧁', '👑', '🌈', '💫',
+            '💋', '🌼', '🍬', '🪄', '💌', '💞', '💓', '💟', '✨', '🎇',
+            '❤️‍🔥', '💖', '🌸', '🌹', '🍒', '😍', '🥰', '💗', '💖'
+        ];
+        
+        const container8d = document.getElementById('floatingEmojis8d');
+        let activeCount = 0;
+        const MAX_EMOJI = 130;
+        
+        // Get random 8D end positions (wide spread: left, right, top, bottom corners)
+        function getRandomTrajectory() {
+            const endX = (Math.random() - 0.5) * (window.innerWidth * 1.6);
+            const endY = (Math.random() - 0.5) * (window.innerHeight * 1.4);
+            return { endX, endY };
         }
-        updateCounter();
-    }
-    
-    function updateCounter() {
-        slideCounterDiv.innerHTML = `💖 ${currentIndex+1} / ${totalSlides} 💖`;
-    }
-    
-    function showSlide(index) {
-        slides.forEach((slide, i) => {
-            if (i === index) {
-                slide.classList.add('active');
-            } else {
-                slide.classList.remove('active');
+        
+        function create8DEmoji() {
+            if (activeCount > MAX_EMOJI) return;
+            const randomEmoji = megaEmojis[Math.floor(Math.random() * megaEmojis.length)];
+            const emojiDiv = document.createElement('div');
+            emojiDiv.classList.add('emoji-8d');
+            emojiDiv.innerText = randomEmoji;
+            
+            // Random size from 24px to 68px for dynamic feel
+            const size = Math.floor(Math.random() * 44) + 24;
+            emojiDiv.style.fontSize = size + 'px';
+            
+            // Random starting edge (0:left, 1:right, 2:top, 3:bottom)
+            const startSide = Math.floor(Math.random() * 4);
+            let startX, startY;
+            const marginOffset = 25;
+            if (startSide === 0) { // left
+                startX = -marginOffset;
+                startY = Math.random() * window.innerHeight;
+            } else if (startSide === 1) { // right
+                startX = window.innerWidth + marginOffset;
+                startY = Math.random() * window.innerHeight;
+            } else if (startSide === 2) { // top
+                startX = Math.random() * window.innerWidth;
+                startY = -marginOffset;
+            } else { // bottom
+                startX = Math.random() * window.innerWidth;
+                startY = window.innerHeight + marginOffset;
             }
-        });
-        currentIndex = index;
-        updateCounter();
-        // soft emoji effect on slide change
-        burstEmojiHeart(5);
-    }
-    
-    function nextSlide() {
-        let newIndex = (currentIndex + 1) % totalSlides;
-        showSlide(newIndex);
-        resetAutoTimer();
-        createFloatingEmoji(1);
-    }
-    
-    function prevSlide() {
-        let newIndex = (currentIndex - 1 + totalSlides) % totalSlides;
-        showSlide(newIndex);
-        resetAutoTimer();
-    }
-    
-    function startAutoSlide() {
-        if (autoSlideInterval) clearInterval(autoSlideInterval);
-        autoSlideInterval = setInterval(() => {
-            nextSlide();
-        }, 5500);  // gentle 5.5 sec to read each special message
-    }
-    
-    function resetAutoTimer() {
-        if (autoSlideInterval) {
-            clearInterval(autoSlideInterval);
-            startAutoSlide();
-        }
-    }
-    
-    // ---------- FLOATING EMOJIS (soft & dreamy) ----------
-    const emojisArray = ['❤️', '💖', '🌸', '✨', '🎂', '💕', '😘', '🥳', '🎀', '💫', '🌟', '🌷', '💗', '🎉', '🫶', '💋', '🍰', '🎈', '💌', '💓', '⭐', '💞', '👑', '🍀'];
-    
-    function createFloatingEmoji(burstCount = 1) {
-        const container = document.getElementById('floatZone');
-        for(let n=0; n<burstCount; n++) {
-            const el = document.createElement('div');
-            el.classList.add('float-item');
-            const randomEmoji = emojisArray[Math.floor(Math.random() * emojisArray.length)];
-            el.innerText = randomEmoji;
-            const leftPos = Math.random() * 100;
-            const duration = 9 + Math.random() * 7;
-            const size = 1.3 + Math.random() * 1.5;
-            el.style.left = leftPos + '%';
-            el.style.fontSize = `${size}rem`;
-            el.style.animationDuration = `${duration}s`;
-            el.style.animationDelay = `${Math.random() * 4}s`;
-            container.appendChild(el);
-            setTimeout(() => { if(el && el.remove) el.remove(); }, duration * 1000);
-        }
-    }
-    
-    function burstEmojiHeart(count = 6) {
-        for (let i = 0; i < count; i++) {
-            setTimeout(() => createFloatingEmoji(1), i * 80);
-        }
-    }
-    
-    let continuousFloat;
-    function startContinuousFloating() {
-        if (continuousFloat) clearInterval(continuousFloat);
-        continuousFloat = setInterval(() => {
-            createFloatingEmoji(1);
-        }, 750);  // calm, consistent emoji rain
-        // initial soft burst
-        setTimeout(() => {
-            for(let i=0;i<10;i++) setTimeout(()=>createFloatingEmoji(1), i*90);
-        }, 300);
-    }
-    
-    // Click on slide to add extra love effect
-    function attachSlideClickEffect() {
-        setTimeout(() => {
-            document.querySelectorAll('.slide').forEach(slide => {
-                slide.addEventListener('click', (e) => {
-                    e.stopPropagation();
-                    burstEmojiHeart(12);
-                    // playful caption pop
-                    const cap = slide.querySelector('.photo-caption');
-                    if(cap) {
-                        cap.style.transform = "translateX(-50%) scale(1.03)";
-                        setTimeout(() => { if(cap) cap.style.transform = ""; }, 250);
-                    }
-                });
+            
+            emojiDiv.style.left = startX + 'px';
+            emojiDiv.style.top = startY + 'px';
+            
+            const { endX, endY } = getRandomTrajectory();
+            emojiDiv.style.setProperty('--endX', endX + 'px');
+            emojiDiv.style.setProperty('--endY', endY + 'px');
+            
+            const duration = Math.random() * 14 + 8; // 8 to 22 seconds smooth
+            emojiDiv.style.animationDuration = duration + 's';
+            const delay = Math.random() * 6;
+            emojiDiv.style.animationDelay = delay + 's';
+            
+            container8d.appendChild(emojiDiv);
+            activeCount++;
+            
+            emojiDiv.addEventListener('animationend', () => {
+                if (emojiDiv && emojiDiv.remove) {
+                    emojiDiv.remove();
+                    activeCount--;
+                }
             });
-        }, 200);
-    }
-    
-    // ------------- MUSIC: ALWAYS ON, NO BUTTON, AUTOPLAY FORCE -------------
-    // Music auto starts on page load and continues forever. No visible button.
-    let bgMusic = null;
-    let musicStarted = false;
-    
-    function initAndForceMusic() {
-        bgMusic = new Audio("song1.mp3");
-        bgMusic.loop = true;
-        bgMusic.volume = 0.55;
-        bgMusic.preload = "auto";
-        
-        bgMusic.onerror = () => {
-            console.warn("Music file song1.mp3 not found, but the celebration continues with love!");
-            // fallback - no error visible to user, just keep silent
-        };
-        
-        // Attempt to play immediately on load (autoplay)
-        const playAttempt = bgMusic.play();
-        if (playAttempt !== undefined) {
-            playAttempt.then(() => {
-                musicStarted = true;
-                console.log("Music started automatically");
-            }).catch(() => {
-                console.log("Autoplay prevented by browser - will play on first interaction but we use hidden overlay trick");
-                // even if blocked, we will play on the very first user tap anywhere (still no button)
-                const startMusicOnAnyTouch = () => {
-                    if (bgMusic && !musicStarted) {
-                        bgMusic.play().then(() => {
-                            musicStarted = true;
-                        }).catch(e => console.log("still blocked"));
-                    }
-                    document.removeEventListener('click', startMusicOnAnyTouch);
-                    document.removeEventListener('touchstart', startMusicOnAnyTouch);
-                };
-                document.addEventListener('click', startMusicOnAnyTouch);
-                document.addEventListener('touchstart', startMusicOnAnyTouch);
-            });
+            
+            setTimeout(() => {
+                if (emojiDiv && emojiDiv.remove) {
+                    emojiDiv.remove();
+                    activeCount--;
+                }
+            }, duration * 1000 + 500);
         }
         
-        // Also try to play when page becomes visible (ensures music keeps playing)
-        document.addEventListener('visibilitychange', () => {
-            if (!document.hidden && bgMusic && musicStarted && bgMusic.paused) {
-                bgMusic.play().catch(e=>{});
+        // Super abundant generation for 8D feel
+        function start8DInfinite() {
+            // initial burst
+            for (let i = 0; i < 70; i++) {
+                setTimeout(() => create8DEmoji(), i * 80);
             }
-        });
-    }
-    
-    // ---------- sparkle stars background ----------
-    function addSparkles() {
-        const sparkDiv = document.querySelector('.sparkle');
-        for (let i=0;i<70;i++) {
-            let star = document.createElement('div');
-            star.innerHTML = '✨';
-            star.style.position = 'absolute';
-            star.style.left = Math.random() * 100 + '%';
-            star.style.top = Math.random() * 100 + '%';
-            star.style.fontSize = (Math.random() * 20 + 6) + 'px';
-            star.style.opacity = 0.25 + Math.random() * 0.4;
-            star.style.animation = 'twinkleStar 4s infinite alternate';
-            star.style.pointerEvents = 'none';
-            sparkDiv.appendChild(star);
-        }
-    }
-    
-    // inject keyframes
-    const styleSheet = document.createElement("style");
-    styleSheet.textContent = `
-        @keyframes twinkleStar {
-            0% { opacity: 0.2; transform: scale(0.8);}
-            100% { opacity: 0.8; transform: scale(1.2);}
-        }
-        .photo-caption {
-            transition: transform 0.2s ease;
-            white-space: normal;
-            text-align: center;
-            line-height: 1.4;
-            font-weight: 600;
-        }
-    `;
-    document.head.appendChild(styleSheet);
-    
-    // ---------- INIT ALL ----------
-    function init() {
-        buildSlides();                 // each photo with its own 1-line message
-        startAutoSlide();             // slides change every 5.5 sec (like ppt)
-        startContinuousFloating();    // soft emoji atmosphere
-        initAndForceMusic();          // music always on, no button
-        
-        prevBtn.addEventListener('click', prevSlide);
-        nextBtn.addEventListener('click', nextSlide);
-        
-        attachSlideClickEffect();
-        
-        // initial burst of happiness
-        setTimeout(() => {
-            burstEmojiHeart(12);
-        }, 600);
-        
-        // periodic little emoji love (soft)
-        setInterval(() => {
-            if(Math.random() > 0.7) createFloatingEmoji(1);
-        }, 2400);
-        
-        // small animation on counter for fun
-        const counterDiv = document.querySelector('.slide-counter');
-        if(counterDiv) {
+            // Continuous flow
             setInterval(() => {
-                counterDiv.style.transform = "scale(1.02)";
-                setTimeout(() => { if(counterDiv) counterDiv.style.transform = ""; }, 300);
-            }, 4000);
+                const spawnCount = Math.random() > 0.6 ? 2 : 1;
+                for (let i = 0; i < spawnCount; i++) {
+                    create8DEmoji();
+                }
+            }, 300);
+            // extra waves
+            setInterval(() => {
+                if (activeCount < 90) {
+                    for (let s = 0; s < 3; s++) setTimeout(() => create8DEmoji(), s * 90);
+                }
+            }, 2700);
         }
-    }
-    
-    addSparkles();
-    window.addEventListener('DOMContentLoaded', init);
-    window.addEventListener('load', () => {
-        console.log("🎉 Birthday Slideshow — each photo has one unique line, music always on, no button!");
-    });
+        
+        start8DInfinite();
+        
+        // Resize: ensure new emojis can adapt, existing ones fine
+        window.addEventListener('resize', () => {
+            // No removal needed, fresh emojis will adjust with new bounds
+        });
+        
+        // ---------- FULLSCREEN VIDEO (No Download Button) ----------
+        const videoOverlay = document.getElementById('videoOverlay');
+        const specialBtn = document.getElementById('specialVideoBtn');
+        const closeBtn = document.getElementById('closeVideoBtn');
+        const videoElem = document.getElementById('birthdayVideo');
+        const videoFile = "kumkumbdyvdo.mp4";
+        
+        // set video source
+        if (videoElem.querySelector('source')) {
+            videoElem.querySelector('source').src = videoFile;
+            videoElem.load();
+        } else {
+            const sourceNode = document.createElement('source');
+            sourceNode.src = videoFile;
+            sourceNode.type = 'video/mp4';
+            videoElem.appendChild(sourceNode);
+            videoElem.load();
+        }
+        
+        function openFullscreenVideo() {
+            videoOverlay.classList.add('active');
+            videoElem.load();
+            const playPromise = videoElem.play();
+            if (playPromise !== undefined) {
+                playPromise.catch(e => {
+                    console.log("Autoplay blocked, user can click play manually");
+                });
+            }
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeFullscreenVideo() {
+            videoOverlay.classList.remove('active');
+            videoElem.pause();
+            document.body.style.overflow = '';
+        }
+        
+        specialBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            openFullscreenVideo();
+        });
+        
+        closeBtn.addEventListener('click', () => {
+            closeFullscreenVideo();
+        });
+        
+        videoOverlay.addEventListener('click', (e) => {
+            if (e.target === videoOverlay) {
+                closeFullscreenVideo();
+            }
+        });
+        
+        // Friendly error if video missing
+        videoElem.addEventListener('error', () => {
+            const toastNote = document.createElement('div');
+            toastNote.innerText = "💖 Video 'kumkumbdyvdo.mp4' not found. But your magical birthday wish still shines! 🌸";
+            toastNote.style.position = "fixed";
+            toastNote.style.bottom = "25px";
+            toastNote.style.left = "50%";
+            toastNote.style.transform = "translateX(-50%)";
+            toastNote.style.backgroundColor = "#ff4d6d";
+            toastNote.style.color = "white";
+            toastNote.style.padding = "12px 28px";
+            toastNote.style.borderRadius = "60px";
+            toastNote.style.fontWeight = "bold";
+            toastNote.style.zIndex = "30000";
+            toastNote.style.fontFamily = "Poppins, sans-serif";
+            toastNote.style.backdropFilter = "blur(12px)";
+            toastNote.style.fontSize = "0.9rem";
+            toastNote.style.textAlign = "center";
+            document.body.appendChild(toastNote);
+            setTimeout(() => toastNote.remove(), 4500);
+        });
+        
+        // Add 3D sparkle effect when clicking on messages
+        const allMsgBlocks = document.querySelectorAll('.msg-block');
+        allMsgBlocks.forEach(block => {
+            block.addEventListener('click', (e) => {
+                const sparkIcons = ['✨', '💖', '🎀', '🌸', '🌟', '💫'];
+                const spark = document.createElement('div');
+                spark.innerText = sparkIcons[Math.floor(Math.random() * sparkIcons.length)];
+                spark.style.position = 'absolute';
+                spark.style.fontSize = '2.4rem';
+                spark.style.pointerEvents = 'none';
+                spark.style.left = (e.clientX - 20) + 'px';
+                spark.style.top = (e.clientY - 30) + 'px';
+                spark.style.opacity = '0.9';
+                spark.style.transition = 'all 0.6s ease-out';
+                spark.style.zIndex = '99999';
+                spark.style.filter = 'drop-shadow(0 0 6px gold)';
+                document.body.appendChild(spark);
+                setTimeout(() => {
+                    spark.style.transform = 'translateY(-80px) scale(1.6)';
+                    spark.style.opacity = '0';
+                    setTimeout(() => spark.remove(), 700);
+                }, 30);
+            });
+        });
+        
+        // Confetti happy entrance
+        function birthdayConfetti() {
+            for (let i = 0; i < 70; i++) {
+                setTimeout(() => {
+                    const conf = document.createElement('div');
+                    conf.innerText = ['🎉', '🎊', '✨', '💖', '🎂', '🌸'][Math.floor(Math.random() * 6)];
+                    conf.style.position = 'fixed';
+                    conf.style.left = Math.random() * window.innerWidth + 'px';
+                    conf.style.top = '-30px';
+                    conf.style.fontSize = '34px';
+                    conf.style.opacity = '0.9';
+                    conf.style.pointerEvents = 'none';
+                    conf.style.zIndex = '10000';
+                    conf.style.transition = 'transform 1.5s linear, opacity 1s';
+                    document.body.appendChild(conf);
+                    setTimeout(() => {
+                        conf.style.transform = `translateY(${window.innerHeight + 100}px) rotate(420deg)`;
+                        conf.style.opacity = '0';
+                        setTimeout(() => conf.remove(), 1500);
+                    }, 20);
+                }, i * 60);
+            }
+        }
+        setTimeout(birthdayConfetti, 400);
+        
+        // Prevent body scroll when video open
+        window.addEventListener('resize', () => {
+            if (videoOverlay.classList.contains('active')) {
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.body.style.overflow = '';
+            }
+        });
+        
+        console.log("💖✨ 8D Birthday Magic for Kumkum from Aarju ✨💖");
+    })();
 </script>
 </body>
 </html>
